@@ -1,0 +1,61 @@
+﻿body {
+    background-color: khaki;
+}
+
+.chosenUrl h2 {
+    color: navy;
+    position: relative;
+    left: 10%;
+    text-decoration: underline;
+}
+
+.chosenUrl h4 {
+    color: crimson;
+    position: relative;
+    left: 10%;
+}
+
+.enterButton {  
+    border-radius: 5px;
+    height: 30px;
+    width: 100px;
+    position: absolute;
+    left: 40%;
+    background-color: green;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-weight: 700;
+    color: white;
+    font:bolder;
+}
+
+.resetButton {
+    border-radius: 5px;
+    height: 30px;
+    width: 100px;
+    position: absolute;
+    left: 50%;
+    background-color: darkorange;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-weight: 700;
+    color: white;
+    font:bolder;
+}
+
+.top10 {
+    position: absolute;
+    background-color:white;
+    width:370px;
+    height:580px;
+    top: 45%;
+    left: 36%;
+    border: solid;
+}
+
+.resultsBlock h3 {
+    text-align:center;
+    text-decoration: underline;
+    color: navy;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
