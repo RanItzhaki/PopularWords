@@ -119,7 +119,7 @@ namespace PopularWords
             }
 
             // Gets the top 10 popular words in the url and the number of their appearances.
-            while (tenMostPopularWords.Count < 10)
+            while (tenMostPopularWords.Count < 10 && wordsCounter.Count > 0)
             {
                 currentMaxValue = wordsCounter.Values.Max();
                 currentWord = wordsCounter.FirstOrDefault(x => x.Value == currentMaxValue).Key;
