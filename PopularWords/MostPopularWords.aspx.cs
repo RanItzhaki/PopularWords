@@ -20,15 +20,15 @@ namespace PopularWords
         // The method scanns the text of the url and presents the top ten words in it with their appearances counters.
         protected void GetContentFromUrl(object sender, EventArgs e)
         {
-            List<string> wordsList = new List<string>();
-            List<string> extendedWordsList = new List<string>();
-            string[] wordsArray = null;
-            List<string> tenMostPopularWords = null;
-            List<int> tenHeightsAppearances = null;
-
-            try
+            if (urlInput.Text != string.Empty && urlInput.Text != null)
             {
-                if (urlInput.Text != string.Empty && urlInput.Text != null)
+                List<string> wordsList = new List<string>();
+                List<string> extendedWordsList = new List<string>();
+                string[] wordsArray = null;
+                List<string> tenMostPopularWords = null;
+                List<int> tenHeightsAppearances = null;
+
+                try
                 {
                     string urlOfUser = urlInput.Text;
                     string urlContent = string.Empty;
@@ -56,33 +56,37 @@ namespace PopularWords
                         wordsList.Add(item.GetAttributeValue("title", ""));
                     }
                 }
-            }
-            catch (WebException)
-            {
-            }
-            catch (UriFormatException)
-            {
-                top10.InnerHtml = "Illegal Input!";
-            }
-            catch (NullReferenceException)
-            {
-            }
-            finally
-            {
-                if (top10.InnerHtml != "Illegal Input!")
+                catch (WebException)
                 {
-                    foreach (string phrase in wordsList)
-                    {
-                        wordsArray = Regex.Split(phrase, @"\s");
-                        extendedWordsList.AddRange(wordsArray);
-                    }
-
-                    // Gets the top 10 popular words in the url and the number of their appearances.
-                    tenMostPopularWords = GetTenMostPopularWords(extendedWordsList, out tenHeightsAppearances);
-
-                    // Prints the top 10 popular words in the url and the number of their appearances on the screen.
-                    PrintWordsOnScreen(tenMostPopularWords, tenHeightsAppearances);
                 }
+                catch (UriFormatException)
+                {
+                    top10.InnerHtml = "Illegal Input!";
+                }
+                catch (NullReferenceException)
+                {
+                }
+                finally
+                {
+                    if (top10.InnerHtml != "Illegal Input!")
+                    {
+                        foreach (string phrase in wordsList)
+                        {
+                            wordsArray = Regex.Split(phrase, @"\s");
+                            extendedWordsList.AddRange(wordsArray);
+                        }
+
+                        // Gets the top 10 popular words in the url and the number of their appearances.
+                        tenMostPopularWords = GetTenMostPopularWords(extendedWordsList, out tenHeightsAppearances);
+
+                        // Prints the top 10 popular words in the url and the number of their appearances on the screen.
+                        PrintWordsOnScreen(tenMostPopularWords, tenHeightsAppearances);
+                    }
+                }
+            }
+            else
+            {
+                top10.InnerHtml = "Empty Input.";
             }
         }
 
