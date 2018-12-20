@@ -61,7 +61,8 @@ namespace PopularWords
                 }
                 catch (UriFormatException)
                 {
-                    top10.InnerHtml = "Illegal Input!";
+                    string alertMessage = "alert(\"Illegal Input!\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", alertMessage, true);
                 }
                 catch (NullReferenceException)
                 {
@@ -86,7 +87,8 @@ namespace PopularWords
             }
             else
             {
-                top10.InnerHtml = "Empty Input.";
+                string alertMessage = "alert(\"Empty Input\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", alertMessage, true);
             }
         }
 
