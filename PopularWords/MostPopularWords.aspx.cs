@@ -18,15 +18,15 @@ namespace PopularWords
     public partial class MostPopularWords : System.Web.UI.Page
     {
         // The method scanns the text of the url and presents the top ten words in it with their appearances counters.
-        protected void GetContentFromUrl(object sender, EventArgs e)
+        protected void ProcessContentFromUrl(object sender, EventArgs e)
         {
             if (urlInput.Text != string.Empty && urlInput.Text != null)
             {
                 List<string> wordsList = new List<string>();
                 List<string> extendedWordsList = new List<string>();
-                string[] wordsArray = null;
                 List<string> tenMostPopularWords = null;
                 List<int> tenHeightsAppearances = null;
+                string[] wordsArray = null;
 
                 try
                 {
@@ -96,17 +96,17 @@ namespace PopularWords
         protected List<string> GetTenMostPopularWords(List<string> wordsList, out List<int> countersList)
         {
             List<string> tenMostPopularWords = new List<string>();
-            countersList = new List<int>();
             Dictionary<string, int> wordsCounter = new Dictionary<string, int>();
             string currentWord = string.Empty;
             int currentMaxValue = 0;
             int currentCount = 0;
+            countersList = new List<int>();
 
             foreach (string word in wordsList)
             {
                 if (word != null && word != string.Empty)
                 {
-                    if (wordsCounter.ContainsKey(word)) // if word exists in the dictionary, increases its appearances counter.
+                    if (wordsCounter.ContainsKey(word)) // If the word exists in the dictionary, increases its appearances counter, else adds it.
                     {
                         wordsCounter.TryGetValue(word, out currentCount);
                         currentCount++;
@@ -137,12 +137,12 @@ namespace PopularWords
         protected void PrintWordsOnScreen(List<string> wordsList, List<int> countersList)
         {
             StringBuilder listOfWords = new StringBuilder();
-            int curerntIndex = 0;
+            int currentIndex = 0;
 
             for (int i = 0; i < wordsList.Count; i++)
             {
-                curerntIndex = i + 1;
-                listOfWords.Append("<strong>" + curerntIndex + ") " + wordsList[i] + "</strong><br>");
+                currentIndex = i + 1;
+                listOfWords.Append("<strong>" + currentIndex + ") " + wordsList[i] + "</strong><br>");
                 listOfWords.Append("<strong>Appearances: " + countersList[i] + "</strong><br><br>");
             }
 

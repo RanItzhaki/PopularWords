@@ -21,7 +21,7 @@
                 <asp:TextBox ID="urlInput" placeholder="Insert URL" Width="900px" runat="server"></asp:TextBox>
             </h4>
             <br />
-            <asp:Button CssClass="enterButton" runat="server" Text="ENTER" onclick="GetContentFromUrl" /> 
+            <asp:Button CssClass="enterButton" runat="server" Text="ENTER" onclick="ProcessContentFromUrl" /> 
             <asp:Button CssClass="resetButton" runat="server" Text="CLEAR" onclick="ClearScreen" /> 
         </div>
         <div class="resultsBlock" runat="server">
