@@ -27,6 +27,7 @@ namespace PopularWords
                 List<string> tenMostPopularWords = null;
                 List<int> tenHeightsAppearances = null;
                 string[] wordsArray = null;
+                string alertMessage = string.Empty;
 
                 try
                 {
@@ -61,7 +62,7 @@ namespace PopularWords
                 }
                 catch (UriFormatException)
                 {
-                    string alertMessage = "alert(\"Illegal Input!\");";
+                    alertMessage = "alert(\"Illegal Input!\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", alertMessage, true);
                 }
                 catch (NullReferenceException)
@@ -69,7 +70,7 @@ namespace PopularWords
                 }
                 finally
                 {
-                    if (top10.InnerHtml != "Illegal Input!")
+                    if (alertMessage == string.Empty)
                     {
                         foreach (string phrase in wordsList)
                         {
@@ -146,7 +147,7 @@ namespace PopularWords
                 listOfWords.Append("<strong>Appearances: " + countersList[i] + "</strong><br><br>");
             }
 
-            top10.InnerHtml = listOfWords.ToString(); 
+            top10.InnerHtml = listOfWords.ToString();
         }
 
         // The method clears the screen.
