@@ -59,6 +59,8 @@ namespace PopularWords
                 }
                 catch (WebException)
                 {
+                    alertMessage = "alert(\"Connection error!\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", alertMessage, true);
                 }
                 catch (UriFormatException)
                 {
